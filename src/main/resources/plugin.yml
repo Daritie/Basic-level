@@ -1,0 +1,4 @@
+name: Basics
+version: 1.0.0
+main: me.darity.basics.Basics
+api-version: 1.21.1
