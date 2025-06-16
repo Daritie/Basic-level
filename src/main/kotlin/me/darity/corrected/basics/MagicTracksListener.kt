@@ -10,12 +10,9 @@ import org.bukkit.plugin.Plugin
 
 object MagicTracksListener : Listener {
     private const val TRACKS_REMOVING_DELAY: Long = 10 * 20
-
-    private lateinit var plugin: Plugin
     private val tracks = mutableListOf<Location>()
 
     fun init(plugin: Plugin) {
-        MagicTracksListener.plugin = plugin
         scheduler.runTaskTimer(plugin, 0, 5) { spawnTracks() }
         plugin.server.pluginManager.registerEvents(this, plugin)
     }
@@ -27,7 +24,7 @@ object MagicTracksListener : Listener {
             val world = location.world
             tracks.add(location)
             world.spawnParticle(Particle.WAX_ON, location, 1)
-            scheduler.runTaskLater(plugin, TRACKS_REMOVING_DELAY) {
+            scheduler.runTaskLater(BasicsPlugin.instance, TRACKS_REMOVING_DELAY) {
                 world.spawnParticle(Particle.WAX_ON, location, 1)
                 tracks.remove(location)
             }

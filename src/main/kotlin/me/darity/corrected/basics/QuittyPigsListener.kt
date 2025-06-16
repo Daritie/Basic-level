@@ -10,11 +10,9 @@ import org.bukkit.plugin.Plugin
 import java.util.UUID
 
 object QuittyPigsListener : Listener {
-    private lateinit var plugin: Plugin
     private val playerPigs = mutableMapOf<UUID, UUID>()
 
     fun init(plugin: Plugin) {
-        this.plugin = plugin
         plugin.server.pluginManager.registerEvents(this, plugin)
     }
 

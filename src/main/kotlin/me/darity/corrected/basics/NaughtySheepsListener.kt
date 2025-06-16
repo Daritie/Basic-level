@@ -14,10 +14,7 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.util.Vector
 
 object NaughtySheepsListener : Listener {
-    private lateinit var plugin: Plugin
-
     fun init(plugin: Plugin) {
-        this.plugin = plugin
         plugin.server.pluginManager.registerEvents(this, plugin)
     }
 
@@ -41,7 +38,7 @@ object NaughtySheepsListener : Listener {
                 entity.location,
                 ItemStack(Material.DIAMOND_SWORD).apply { addEnchantment(Enchantment.UNBREAKING, 1) }
             ) { swordEntity ->
-                scheduler.runTaskLater(plugin, 2 * 20) {
+                scheduler.runTaskLater(BasicsPlugin.instance, 2 * 20) {
                     swordEntity.takeIf { it.isValid }?.remove()
                 }
             }

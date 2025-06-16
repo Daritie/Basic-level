@@ -15,10 +15,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.Plugin
 
 object BasicActionsWithBlocksAndEntitiesListener : Listener {
-    private lateinit var plugin: Plugin
-
     fun init(plugin: Plugin) {
-        this.plugin = plugin
         plugin.server.pluginManager.registerEvents(this, plugin)
     }
 

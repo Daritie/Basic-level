@@ -10,10 +10,7 @@ import org.bukkit.plugin.Plugin
 
 object ChatDecorationsListener : Listener {
     private val DEFAULT_PREFIX = Text.text("abebe").color(NamedTextColor.RED)
-    private lateinit var plugin: Plugin
-
     fun init(plugin: Plugin) {
-        this.plugin = plugin
         plugin.server.pluginManager.registerEvents(this, plugin)
     }
 
