@@ -1,4 +1,4 @@
 name: Basics
 version: 1.0.0
-main: me.darity.basics.Basics
+main: me.darity.corrected.basics.BasicsPlugin
 api-version: 1.21.1
