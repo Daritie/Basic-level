@@ -11,7 +11,7 @@ import java.util.UUID
 
 object QuittyPigsListener : Listener {
     private lateinit var plugin: Plugin
-    private val playerPig = mutableMapOf<UUID, UUID>()
+    private val playerPigs = mutableMapOf<UUID, UUID>()
 
     fun init(plugin: Plugin) {
         this.plugin = plugin
@@ -24,7 +24,7 @@ object QuittyPigsListener : Listener {
         event.quitMessage(null)
         player.world.spawn(player.location, Pig::class.java) { pig ->
             pig.setAI(false)
-            playerPig[player.uniqueId] = pig.uniqueId
+            playerPigs[player.uniqueId] = pig.uniqueId
         }
     }
 
@@ -32,7 +32,7 @@ object QuittyPigsListener : Listener {
     private fun onJoin(event: PlayerJoinEvent) {
         val player = event.player
         event.joinMessage(event.joinMessage()?.color(NamedTextColor.GREEN))
-        playerPig.remove(player.uniqueId)?.let { player.world.getEntity(it)?.remove() }
+        playerPigs.remove(player.uniqueId)?.let { player.world.getEntity(it)?.remove() }
     }
 
 }
